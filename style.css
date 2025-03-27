@@ -1,3 +1,22 @@
+#word {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  border: 1px solid red;
+  padding: 5px;
+  justify-content: center;
+}
+
+.wordLetter {
+  display: flex;
+  width: 6vh;
+  height: 6vh;
+  border: 1px solid red;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
 .keyboard {
   display: flex;
   flex-direction: column;

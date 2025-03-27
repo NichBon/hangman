@@ -14,21 +14,50 @@ const baldurs = [
     'losiir'
 ]
 // 'the dark urge',
-console.log(baldurs.length)
-console.log(Math.floor(Math.random()*(baldurs.length-1)))
-const word = baldurs[Math.floor(Math.random()*(baldurs.length-1))]
-console.log(word)
+
+const wordSelection = (wordList) => {
+    return(wordList[Math.floor(Math.random()*(wordList.length-1))])
+}
+
+
+
+// create word space 
+const wordSpaceCreate = (word) => {
+    const wordSpace = document.querySelector('#word')
+    for (i=0; i < word.length; i++) {
+        let div = document.createElement('div');
+        div.classList = (`wordLetter`);
+        div.id = (`wordLetter${0}`);
+        div.innerHTML = '__';
+        wordSpace.appendChild(div);
+    }
+}
+
+
+// event for letter clicking
+const letterKeys = [
+    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 
+    'a','s', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 
+    'z','x', 'c', 'v', 'b', 'n', 'm',
+];
+
+const checkLetter = (letter, word) => {
+    return(word.indexOf(letter))
+}
 
 document.querySelectorAll('.letter').forEach((letter, key) => {
     letter.addEventListener("click", (e) => {
-        console.log(key);
-
-
+        console.log(letterKeys[key]);
+        console.log(checkLetter(letterKeys[key], word))
         letter.classList.add('guessed')
     })
 })
 
-console.log()
+//GAME RUNNING
+const word = wordSelection(baldurs);
+wordSpaceCreate(word);
+
+console.log(word)
 
 // confirm if a letter is in a guess
     // check array of word
