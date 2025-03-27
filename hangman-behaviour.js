@@ -1,5 +1,34 @@
 // generate a word to guess at
 // make the words coding related?
+const baldurs = [
+    'shadowheart', 
+    'minsc', 
+    'laezel', 
+    'karlach', 
+    'astarion',
+    'gale',
+    'wyll',
+    'halsin',
+    'minthara',
+    'alfira',
+    'losiir'
+]
+// 'the dark urge',
+console.log(baldurs.length)
+console.log(Math.floor(Math.random()*(baldurs.length-1)))
+const word = baldurs[Math.floor(Math.random()*(baldurs.length-1))]
+console.log(word)
+
+document.querySelectorAll('.letter').forEach((letter, key) => {
+    letter.addEventListener("click", (e) => {
+        console.log(key);
+
+
+        letter.classList.add('guessed')
+    })
+})
+
+console.log()
 
 // confirm if a letter is in a guess
     // check array of word

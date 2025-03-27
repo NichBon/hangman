@@ -1,0 +1,36 @@
+.keyboard {
+    display: flex;
+    flex-direction: column;
+
+    &__row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 5px;
+
+
+        .letter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            width: 4vh;
+            height: 4vh;
+            margin: 5px;
+        }
+    }
+}
+
+.word {
+    display: flex;
+
+    .letter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.guessed {
+    background-color: red;
+}
