@@ -1,68 +1,50 @@
-// generate a word to guess at
-// make the words coding related?
-const baldurs = [
-    'shadowheart', 
-    'minsc', 
-    'laezel', 
-    'karlach', 
-    'astarion',
-    'gale',
-    'wyll',
-    'halsin',
-    'minthara',
-    'alfira',
-    'losiir'
-]
-// 'the dark urge',
+import {
+    baldurs,
+    fabrics,
+} from './js/wordlists.js';
 
-const wordSelection = (wordList) => {
-    return(wordList[Math.floor(Math.random()*(wordList.length-1))])
-}
+import {
+    wordSelection,
+    checkLetter,
+    letterKeys,
+    gameOver,
+} from './js/game.js'
 
+import {
+    wordSpaceCreate,
+    letterFeedback,
+    renderMan,
+} from './js/dom.js'
 
-
-// create word space 
-const wordSpaceCreate = (word) => {
-    const wordSpace = document.querySelector('#word')
-    for (i=0; i < word.length; i++) {
-        let div = document.createElement('div');
-        div.classList = (`wordLetter`);
-        div.id = (`wordLetter${0}`);
-        div.innerHTML = '__';
-        wordSpace.appendChild(div);
-    }
-}
+// event for clicking letters
+document.querySelectorAll('.letter').forEach((letterButton, key) => {
+    letterButton.addEventListener("click", (e) => {
+        let letterGuessed = letterKeys[key];
+        console.log(letterGuessed);
 
 
-// event for letter clicking
-const letterKeys = [
-    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 
-    'a','s', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 
-    'z','x', 'c', 'v', 'b', 'n', 'm',
-];
+        // success or fail dom
+        let guessIndexList = checkLetter(letterGuessed, word)
+        letterFeedback(letterButton, guessIndexList, letterGuessed)
 
-const checkLetter = (letter, word) => {
-    return(word.indexOf(letter))
-}
+        // success or fail game
+        if (guessIndexList.length === 0) {
+            failcount += 1;
+            renderMan(failcount)
+        }
 
-document.querySelectorAll('.letter').forEach((letter, key) => {
-    letter.addEventListener("click", (e) => {
-        console.log(letterKeys[key]);
-        console.log(checkLetter(letterKeys[key], word))
-        letter.classList.add('guessed')
+        gameOverStatus = gameOver(failcount)
+
     })
 })
 
-//GAME RUNNING
+//GAME INITIATION
+let failcount = 0
+renderMan(failcount)
 const word = wordSelection(baldurs);
 wordSpaceCreate(word);
-
 console.log(word)
 
-// confirm if a letter is in a guess
-    // check array of word
-    // return indexes of matching letter in word
-    // return some false or similar value if not present
 
 // change picture if guess is wrong (or other behaviour)
 

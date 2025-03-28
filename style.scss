@@ -1,3 +1,13 @@
+#heading {
+    display: flex;
+    justify-content: center;
+}
+
+#gallows {
+    display: flex;
+    justify-content: center;
+}
+
 #word {
     display: flex;
     flex-direction: row;
@@ -50,6 +60,10 @@
     }
 }
 
-.guessed {
+.guessed-wrong {
     background-color: red;
+}
+
+.guessed-right {
+    background-color: green;
 }
