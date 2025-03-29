@@ -38,3 +38,21 @@ export const renderMan = (failcount) => {
         console.error('renderMan' + error)
     }
 }
+
+const gameStatusArr = [
+    'Guess a letter',
+    'Is that a line? (9 guesses left)',
+    'Another line? (8 guesses left)',
+    'Must be building a house. (7 guesses left)',
+    'Is that for hanging clothes on? (6 guesses left)',
+    'Might be getting aHEAD of myself. (5 guesses left)',
+    "Where there's a head there's a body. (4 guesses left)",
+    "Need a hand with that? (3 guesses left)",
+    "No hARM could possibly come of this. (2 guesses left)",
+    "Are you pulling my leg? (Last guess)",
+    "Time to hang it up, that's a loss."
+]
+
+export const gameStatus = (failcount) => {
+    document.querySelector('#message-text').innerHTML = gameStatusArr[failcount];
+}

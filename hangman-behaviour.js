@@ -14,6 +14,7 @@ import {
     wordSpaceCreate,
     letterFeedback,
     renderMan,
+    gameStatus,
 } from './js/dom.js'
 
 // event for clicking letters
@@ -33,7 +34,7 @@ document.querySelectorAll('.letter').forEach((letterButton, key) => {
             renderMan(failcount)
         }
 
-        gameOverStatus = gameOver(failcount)
+        gameStatus(failcount)
 
     })
 })
@@ -43,6 +44,7 @@ let failcount = 0
 renderMan(failcount)
 const word = wordSelection(baldurs);
 wordSpaceCreate(word);
+gameStatus(failcount)
 console.log(word)
 
 
