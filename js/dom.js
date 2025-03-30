@@ -50,9 +50,22 @@ const gameStatusArr = [
     "Need a hand with that? (3 guesses left)",
     "No hARM could possibly come of this. (2 guesses left)",
     "Are you pulling my leg? (Last guess)",
-    "Time to hang it up, that's a loss."
+    "Time to hang it up, that's a loss.",
+    "Success!"
 ]
 
-export const gameStatus = (failcount) => {
-    document.querySelector('#message-text').innerHTML = gameStatusArr[failcount];
+export const message = (failcount, gameWin) => {
+    if (gameWin === true) {
+        document.querySelector('#message-text').innerHTML = gameStatusArr[11]
+    } else {
+        document.querySelector('#message-text').innerHTML = gameStatusArr[failcount];
+    }
+}
+
+export const addCompletedWord = (word, winLoss) => {
+    const completedWords = document.querySelector('#completedWords-inner')
+    let div = document.createElement('div');
+    div.classList = (`word-Complete`, `word-${winLoss}`);
+    div.innerHTML = word;
+    completedWords.appendChild(div);
 }

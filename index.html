@@ -11,54 +11,69 @@
 
 <body>
     <main>
-        <section id="heading">
+        <section id="heading" class="container">
             <h1>HANGMAN</h1>
         </section>
 
-        <section id="gallows">
-            <img id='gallows-img' src="">
+        <section id='gameActive'>
+
+            <section id="gallows" class="container">
+                <img id='gallows-img' src="">
+            </section>
+
+            <section id="word"></section>
+
+            <section id="game-interactive">
+                <section id='gameOptions' class="container">
+                    <form id="gameStart"></form>
+                </section>
+
+                <section id="keyboard">
+                    <div class="keyboard__row top-row">
+                        <div class="letter" id="letterq">q</div>
+                        <div class="letter" id="letterw">w</div>
+                        <div class="letter" id="lettere">e</div>
+                        <div class="letter" id="letterr">r</div>
+                        <div class="letter" id="lettert">t</div>
+                        <div class="letter" id="lettery">y</div>
+                        <div class="letter" id="letteru">u</div>
+                        <div class="letter" id="letteri">i</div>
+                        <div class="letter" id="lettero">o</div>
+                        <div class="letter" id="letterp">p</div>
+                    </div>
+                    <div class="keyboard__row middle-row">
+                        <div class="letter" id="lettera">a</div>
+                        <div class="letter" id="letters">s</div>
+                        <div class="letter" id="letterd">d</div>
+                        <div class="letter" id="letterf">f</div>
+                        <div class="letter" id="letterg">g</div>
+                        <div class="letter" id="letterh">h</div>
+                        <div class="letter" id="letterj">j</div>
+                        <div class="letter" id="letterk">k</div>
+                        <div class="letter" id="letterl">l</div>
+                    </div>
+                    <div class="keyboard__row bottom-row">
+                        <div class="letter" id="letterz">z</div>
+                        <div class="letter" id="letterx">x</div>
+                        <div class="letter" id="letterc">c</div>
+                        <div class="letter" id="letterv">v</div>
+                        <div class="letter" id="letterb">b</div>
+                        <div class="letter" id="lettern">n</div>
+                        <div class="letter" id="letterm">m</div>
+                    </div>
+                </section>
+            </section>
         </section>
 
-        <section id="word"></section>
-
-        <section id="keyboard">
-            <div class="keyboard__row top-row">
-                <div class="letter" id="letterq">q</div>
-                <div class="letter" id="letterw">w</div>
-                <div class="letter" id="lettere">e</div>
-                <div class="letter" id="letterr">r</div>
-                <div class="letter" id="lettert">t</div>
-                <div class="letter" id="lettery">y</div>
-                <div class="letter" id="letteru">u</div>
-                <div class="letter" id="letteri">i</div>
-                <div class="letter" id="lettero">o</div>
-                <div class="letter" id="letterp">p</div>
-            </div>
-            <div class="keyboard__row middle-row">
-                <div class="letter" id="lettera">a</div>
-                <div class="letter" id="letters">s</div>
-                <div class="letter" id="letterd">d</div>
-                <div class="letter" id="letterf">f</div>
-                <div class="letter" id="letterg">g</div>
-                <div class="letter" id="letterh">h</div>
-                <div class="letter" id="letterj">j</div>
-                <div class="letter" id="letterk">k</div>
-                <div class="letter" id="letterl">l</div>
-            </div>
-            <div class="keyboard__row bottom-row">
-                <div class="letter" id="letterz">z</div>
-                <div class="letter" id="letterx">x</div>
-                <div class="letter" id="letterc">c</div>
-                <div class="letter" id="letterv">v</div>
-                <div class="letter" id="letterb">b</div>
-                <div class="letter" id="lettern">n</div>
-                <div class="letter" id="letterm">m</div>
-            </div>
-
-        </section>
-
-        <section id="message">
+        <section id="message" class="container">
             <div id="message-text"></div>
+        </section>
+
+        <section id="completedWords" class="container">
+            <div id="completedWords-inner">
+                <h2 id='completedWords-heading' class="hidden"> Completed Words:</h2>
+            </div>
+
         </section>
 
     </main>

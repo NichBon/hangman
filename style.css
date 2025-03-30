@@ -1,16 +1,11 @@
-#heading {
-  display: flex;
-  justify-content: center;
+.hidden {
+  display: none;
 }
 
-#gallows {
+.container {
   display: flex;
   justify-content: center;
-}
-
-#message {
-  display: flex;
-  justify-content: center;
+  border: 1px solid red;
 }
 
 #word {
@@ -67,6 +62,21 @@
 
 .guessed-right {
   background-color: green;
+}
+
+.word-win {
+  color: green;
+}
+
+.word-loss {
+  color: red;
+}
+
+#completedWords-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */

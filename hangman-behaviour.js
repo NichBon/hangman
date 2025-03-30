@@ -14,15 +14,31 @@ import {
     wordSpaceCreate,
     letterFeedback,
     renderMan,
-    gameStatus,
+    message,
+    addCompletedWord,
 } from './js/dom.js'
 
+
+
+//GAME INITIATION
+let failcount = 0;
+let correctLetters = 0;
+let gameEnd = false;
+renderMan(failcount);
+const word = wordSelection(baldurs);
+wordSpaceCreate(word);
+message(failcount)
+console.log(word)
+console.log('hi')
+
+
 // event for clicking letters
+// run on game start
+
 document.querySelectorAll('.letter').forEach((letterButton, key) => {
     letterButton.addEventListener("click", (e) => {
         let letterGuessed = letterKeys[key];
         console.log(letterGuessed);
-
 
         // success or fail dom
         let guessIndexList = checkLetter(letterGuessed, word)
@@ -30,22 +46,37 @@ document.querySelectorAll('.letter').forEach((letterButton, key) => {
 
         // success or fail game
         if (guessIndexList.length === 0) {
+            console.log('wrong letter')
             failcount += 1;
             renderMan(failcount)
+            if (failcount === 10) {
+                gameEnd = true;
+                addCompletedWord(word, 'loss')
+            }
+        } else {
+            correctLetters += guessIndexList.length;
+            console.log('right letter')
+            console.log(correctLetters + ' out of ' + word.length)
+
+            if (correctLetters === word.length) {
+                console.log('win')
+                gameEnd = true;
+                failcount = 11;
+                addCompletedWord(word, 'win')
+            }
+        }
+        message(failcount);
+
+        if (gameEnd === true) {
+            document.querySelector('#keyboard').classList.add('hidden')
+            document.querySelector('#gameOptions').classList.remove('hidden')
+            if (document.querySelector('#completedWords-heading').classList = 'hidden') {
+                document.querySelector('#completedWords-heading').classList.remove('hidden')
+            }
         }
 
-        gameStatus(failcount)
-
-    })
+    }, {once: true})
 })
-
-//GAME INITIATION
-let failcount = 0
-renderMan(failcount)
-const word = wordSelection(baldurs);
-wordSpaceCreate(word);
-gameStatus(failcount)
-console.log(word)
 
 
 // change picture if guess is wrong (or other behaviour)
