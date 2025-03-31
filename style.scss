@@ -27,6 +27,25 @@
     align-items: center;
 }
 
+.word {
+    display: flex;
+
+    .letter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+#gameOptions-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+}
+
 .keyboard {
     display: flex;
     flex-direction: column;
@@ -50,23 +69,23 @@
     }
 }
 
-.word {
-    display: flex;
+.guessed {
+    &__wrong {
+        background-color: red;
+    }
 
-    .letter {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    &__right {
+        background-color: green;
     }
 }
 
-.guessed-wrong {
-    background-color: red;
-}
+// .guessed- {
 
-.guessed-right {
-    background-color: green;
-}
+// }
+
+// .guessed-right {
+
+// }
 
 .word-win {
     color: green;

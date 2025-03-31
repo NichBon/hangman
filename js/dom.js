@@ -18,9 +18,9 @@ export const wordSpaceCreate = (word) => {
 export const letterFeedback = (letterButton, guessIndexList, letterGuessed) => {
     try {
         if (guessIndexList.length === 0) {
-            letterButton.classList.add('guessed-wrong');
+            letterButton.classList.add('guessed__wrong');
         } else {
-            letterButton.classList.add('guessed-right');
+            letterButton.classList.add('guessed__right');
             for (const index of guessIndexList) {
                 document.querySelector(`#wordLetter${index}`).innerHTML = letterGuessed;
             }
@@ -62,10 +62,61 @@ export const message = (failcount, gameWin) => {
     }
 }
 
-export const addCompletedWord = (word, winLoss) => {
+export const addCompletedWord = (word, failCount) => {
+    if (document.querySelector('#completedWords-heading').classList = 'hidden') {
+        document.querySelector('#completedWords-heading').classList.remove('hidden')
+    }
+    const winLoss = failCount === 10 ? 'win' : 'loss';
     const completedWords = document.querySelector('#completedWords-inner')
     let div = document.createElement('div');
     div.classList = (`word-Complete`, `word-${winLoss}`);
     div.innerHTML = word;
     completedWords.appendChild(div);
+}
+
+export const toggleKeyboard = () => {
+    const keyBoard = document.querySelector('#keyboard');
+    const gameOptions = document.querySelector('#gameOptions');
+    if (gameOptions.classList.contains('hidden')) {
+        keyBoard.classList.add('hidden')
+        gameOptions.classList.remove('hidden')
+    } else {
+        keyBoard.classList.add('hidden')
+        gameOptions.classList.remove('hidden')
+    }
+}
+
+export const buttonReset = () => {
+    document.querySelectorAll('.guessed').forEach((letterButton, key) => {
+        letterButton.addEventListener("click", (e) => {
+            let letterGuessed = letterKeys[key];
+            console.log(letterGuessed);
+
+            // success or fail dom
+            let guessIndexList = checkLetter(letterGuessed, word)
+            letterFeedback(letterButton, guessIndexList, letterGuessed)
+
+            // success or fail game
+            if (guessIndexList.length === 0) {
+                failcount += 1;
+                renderMan(failcount)
+                if (failcount === 10) {
+                    gameEnd = true;
+                    addCompletedWord(word, 'loss')
+                }
+            } else {
+                correctLetters += guessIndexList.length;
+
+                if (correctLetters === word.length) {
+                    gameEnd = true;
+                    failcount = 11;
+                    addCompletedWord(word, 'win')
+                }
+            }
+            message(failcount);
+            cleanup(gameEnd)
+        }, { once: true })
+
+        letterButton.classList = 'letter';
+    })
 }

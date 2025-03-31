@@ -25,7 +25,18 @@
 
             <section id="game-interactive">
                 <section id='gameOptions' class="container">
-                    <form id="gameStart"></form>
+                    <div id='gameOptions-inner'>
+                        <h3>Select a word list</h3>
+                        <form id="gameStart">
+                            <select class="wordCategory" name="wordCategory" id="wordCategory" required>
+                                <option value="pickone" selected="selected">Pick one</option>
+                                <option value="baldurs" value='baldurs'>BG3 companions</option>
+                                <option value="pickone" value='fabrics'>Types of fabric</option>
+                            </select>
+                            <button type="submit">Start Game</button>
+                        </form>
+
+                    </div>
                 </section>
 
                 <section id="keyboard">

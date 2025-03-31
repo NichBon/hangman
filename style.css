@@ -27,6 +27,24 @@
   align-items: center;
 }
 
+.word {
+  display: flex;
+}
+.word .letter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameOptions-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+}
+
 .keyboard {
   display: flex;
   flex-direction: column;
@@ -47,20 +65,10 @@
   margin: 5px;
 }
 
-.word {
-  display: flex;
-}
-.word .letter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.guessed-wrong {
+.guessed__wrong {
   background-color: red;
 }
-
-.guessed-right {
+.guessed__right {
   background-color: green;
 }
 

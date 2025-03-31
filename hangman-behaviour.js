@@ -7,7 +7,6 @@ import {
     wordSelection,
     checkLetter,
     letterKeys,
-    gameOver,
 } from './js/game.js'
 
 import {
@@ -16,6 +15,8 @@ import {
     renderMan,
     message,
     addCompletedWord,
+    toggleKeyboard,
+    buttonReset,
 } from './js/dom.js'
 
 
@@ -29,7 +30,6 @@ const word = wordSelection(baldurs);
 wordSpaceCreate(word);
 message(failcount)
 console.log(word)
-console.log('hi')
 
 
 // event for clicking letters
@@ -46,35 +46,26 @@ document.querySelectorAll('.letter').forEach((letterButton, key) => {
 
         // success or fail game
         if (guessIndexList.length === 0) {
-            console.log('wrong letter')
             failcount += 1;
             renderMan(failcount)
             if (failcount === 10) {
                 gameEnd = true;
-                addCompletedWord(word, 'loss')
             }
         } else {
             correctLetters += guessIndexList.length;
-            console.log('right letter')
-            console.log(correctLetters + ' out of ' + word.length)
 
             if (correctLetters === word.length) {
-                console.log('win')
                 gameEnd = true;
                 failcount = 11;
-                addCompletedWord(word, 'win')
+                
             }
         }
         message(failcount);
-
         if (gameEnd === true) {
-            document.querySelector('#keyboard').classList.add('hidden')
-            document.querySelector('#gameOptions').classList.remove('hidden')
-            if (document.querySelector('#completedWords-heading').classList = 'hidden') {
-                document.querySelector('#completedWords-heading').classList.remove('hidden')
-            }
+            toggleKeyboard()
+            buttonReset()
+            addCompletedWord(word, failcount)
         }
-
     }, {once: true})
 })
 
