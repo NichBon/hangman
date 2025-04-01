@@ -27,8 +27,9 @@ export const wordSpaceCreate = (word) => {
     }
 }
 
-export const letterFeedback = (letterButton, guessIndexList, letterGuessed) => {
+export const letterFeedback = (guessIndexList, letterGuessed) => {
     try {
+        const letterButton = document.querySelector(`#${letterGuessed}`)
         if (guessIndexList.length === 0) {
             letterButton.classList.add('guessed');
             letterButton.classList.add('wrong');

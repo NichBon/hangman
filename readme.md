@@ -27,7 +27,6 @@ Hangman game built for Nology project.
 
 ## Bonus
 - Allow keyboard input
-    - not currently implemented
 - Keep track of words that have been used already and display them on the screen
     - tracks along with success/failure through color
 

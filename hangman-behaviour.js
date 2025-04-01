@@ -33,7 +33,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // retrieves word list and selects a word
-    console.log('game attempts to start');
     const formData = Object.fromEntries(new FormData(form));
     const wordCategory = formData.wordCategory;
     word = wordSelection(wordLists[wordCategory]);
@@ -48,43 +47,48 @@ form.addEventListener('submit', (e) => {
     message(failcount);
 });
 
-// KEYBOARD ONSCREEN
+// KEYBOARD ONSCREEN IN PROGRESS
+addEventListener("keydown", (e) => {
+    letterPress(e.key);
+})
+
 document.querySelectorAll('.letter').forEach((letterButton, key) => {
     letterButton.addEventListener("click", (e) => {
         if (letterButton.classList.contains('guessed') || gameEnd) {
             return;
         }
-        let letterGuessed = letterButton.id;
+        letterPress(letterButton.id);
+    })
+})
 
-        // success or fail dom
-        let guessIndexList = checkLetter(letterGuessed, word)
-        letterFeedback(letterButton, guessIndexList, letterGuessed)
+const letterPress = ((letterGuessed) => {
+    // success or fail dom
+    let guessIndexList = checkLetter(letterGuessed, word)
+    letterFeedback(guessIndexList, letterGuessed)
 
-        // success or fail game
-        if (guessIndexList.length === 0) {
-            failcount += 1;
-            renderMan(failcount)
-            if (failcount === 10) {
-                gameEnd = 'loss';
-            }
-        } else {
-            correctLetters += guessIndexList.length;
-            if (correctLetters === word.length) {
-                failcount = 11;
-                gameEnd = 'win';
-            }
+    // success or fail game
+    if (guessIndexList.length === 0) {
+        failcount += 1;
+        renderMan(failcount)
+        if (failcount === 10) {
+            gameEnd = 'loss';
         }
-        message(failcount);
-        if (gameEnd) {
-            toggleKeyboard()
-            addCompletedWord(word, gameEnd)
-            //reset buttons if needed
-            document.querySelectorAll('.guessed').forEach((letterButton, key) => {
-                letterButton.classList = 'letter';
-            })
+    } else {
+        correctLetters += guessIndexList.length;
+        if (correctLetters === word.length) {
+            failcount = 11;
+            gameEnd = 'win';
         }
     }
-    )
+    message(failcount);
+    if (gameEnd) {
+        toggleKeyboard()
+        addCompletedWord(word, gameEnd)
+        //reset buttons if needed
+        document.querySelectorAll('.guessed').forEach((letterButton, key) => {
+            letterButton.classList = 'letter';
+        })
+    }
 })
 
 document.querySelector('#keyboard').classList.add('hidden');
