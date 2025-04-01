@@ -49,6 +49,9 @@ form.addEventListener('submit', (e) => {
 
 // KEYBOARD ONSCREEN IN PROGRESS
 addEventListener("keydown", (e) => {
+    if (document.querySelector(`#${e.key}`).classList.contains('guessed') || gameEnd) {
+        return;
+    }
     letterPress(e.key);
 })
 
