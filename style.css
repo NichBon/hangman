@@ -70,7 +70,7 @@ img {
 }
 
 #game-interactive {
-  height: 20vh;
+  height: 250px;
 }
 
 #gameOptions-inner {
@@ -79,7 +79,7 @@ img {
   justify-content: center;
   align-items: center;
   margin: 5px;
-  padding: 5px;
+  padding-bottom: 5px;
   font-size: 1.4em;
 }
 #gameOptions-inner form {
