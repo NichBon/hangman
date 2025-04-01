@@ -20,14 +20,12 @@ import {
 } from './js/dom.js'
 
 
-
 //GAME INITIATION + GLOBAL VARIABLES
 let failcount = 10;
 let correctLetters = 0;
 let gameEnd = false;
 let word = ''
 renderMan(failcount);
-console.log(wordLists.baldurs)
 
 
 //GAME INITIATION (NOT PURE)
@@ -41,7 +39,6 @@ form.addEventListener('submit', (e) => {
     const wordCategory = formData.wordCategory;
     word = wordSelection(wordLists[wordCategory]);
     wordSpaceCreate(word);
-    console.log(word);
 
     // set game states
     toggleKeyboard();
@@ -50,8 +47,6 @@ form.addEventListener('submit', (e) => {
     gameEnd = false;
     renderMan(failcount)
     message(failcount);
-
-
 });
 
 // KEYBOARD ONSCREEN
