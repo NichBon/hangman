@@ -38,3 +38,4 @@ Hangman game built for Nology project.
 - backend integration for dictionary retrieval/usage
 - safer design/error handling
 - more robust event listening behaviour (What is good practice? What is efficient? What is trivial in either case?)
+- use BEM properly

@@ -65,7 +65,7 @@ const gameStatusArr = [
     "No hARM could possibly come of this. (2 guesses left)",
     "Are you pulling my leg? (Last guess)",
     "Time to hang it up, that's a loss.",
-    "Success! Play Again?"
+    "Success! Click start game to play again."
 ]
 
 export const message = (failcount, gameWin) => {

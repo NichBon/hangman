@@ -6,7 +6,6 @@ import {
 import {
     wordSelection,
     checkLetter,
-    letterKeys,
 } from './js/game.js'
 
 import {
@@ -52,10 +51,10 @@ form.addEventListener('submit', (e) => {
 // KEYBOARD ONSCREEN
 document.querySelectorAll('.letter').forEach((letterButton, key) => {
     letterButton.addEventListener("click", (e) => {
-        if (letterButton.classList.contains('guessed')) {
+        if (letterButton.classList.contains('guessed') || gameEnd) {
             return;
         }
-        let letterGuessed = letterKeys[key];
+        let letterGuessed = letterButton.id;
 
         // success or fail dom
         let guessIndexList = checkLetter(letterGuessed, word)
