@@ -1,8 +1,20 @@
 // create flip card for letters
 
+export const toggleDarkMode = () => {
+    const body = document.querySelector('body');
+    if (body.classList == 'dark') {
+        body.classList.remove('dark')
+        body.classList.add('light')
+    } else {
+        body.classList.remove('light')
+        body.classList.add('dark')
+    }
+}
+
 export const wordSpaceCreate = (word) => {
     try {
         const wordSpace = document.querySelector('#word')
+        wordSpace.replaceChildren();
         for (let i = 0; i < word.length; i++) {
             let div = document.createElement('div');
             div.classList = (`wordLetter`);
@@ -18,11 +30,13 @@ export const wordSpaceCreate = (word) => {
 export const letterFeedback = (letterButton, guessIndexList, letterGuessed) => {
     try {
         if (guessIndexList.length === 0) {
-            letterButton.classList.add('guessed__wrong');
+            letterButton.classList.add('guessed');
+            letterButton.classList.add('wrong');
         } else {
-            letterButton.classList.add('guessed__right');
+            letterButton.classList.add('guessed');
+            letterButton.classList.add('right');
             for (const index of guessIndexList) {
-                document.querySelector(`#wordLetter${index}`).innerHTML = letterGuessed;
+                document.querySelector(`#wordLetter${index}`).innerHTML = letterGuessed.toUpperCase();
             }
         }
     } catch (error) {
@@ -51,7 +65,7 @@ const gameStatusArr = [
     "No hARM could possibly come of this. (2 guesses left)",
     "Are you pulling my leg? (Last guess)",
     "Time to hang it up, that's a loss.",
-    "Success!"
+    "Success! Play Again?"
 ]
 
 export const message = (failcount, gameWin) => {
@@ -62,15 +76,14 @@ export const message = (failcount, gameWin) => {
     }
 }
 
-export const addCompletedWord = (word, failCount) => {
+export const addCompletedWord = (word, gameEnd) => {
     if (document.querySelector('#completedWords-heading').classList = 'hidden') {
         document.querySelector('#completedWords-heading').classList.remove('hidden')
     }
-    const winLoss = failCount === 10 ? 'win' : 'loss';
     const completedWords = document.querySelector('#completedWords-inner')
     let div = document.createElement('div');
-    div.classList = (`word-Complete`, `word-${winLoss}`);
-    div.innerHTML = word;
+    div.classList = (`word-Complete`, `word-${gameEnd}`);
+    div.innerHTML = word.toUpperCase();
     completedWords.appendChild(div);
 }
 
@@ -81,42 +94,7 @@ export const toggleKeyboard = () => {
         keyBoard.classList.add('hidden')
         gameOptions.classList.remove('hidden')
     } else {
-        keyBoard.classList.add('hidden')
-        gameOptions.classList.remove('hidden')
+        gameOptions.classList.add('hidden')
+        keyBoard.classList.remove('hidden')
     }
-}
-
-export const buttonReset = () => {
-    document.querySelectorAll('.guessed').forEach((letterButton, key) => {
-        letterButton.addEventListener("click", (e) => {
-            let letterGuessed = letterKeys[key];
-            console.log(letterGuessed);
-
-            // success or fail dom
-            let guessIndexList = checkLetter(letterGuessed, word)
-            letterFeedback(letterButton, guessIndexList, letterGuessed)
-
-            // success or fail game
-            if (guessIndexList.length === 0) {
-                failcount += 1;
-                renderMan(failcount)
-                if (failcount === 10) {
-                    gameEnd = true;
-                    addCompletedWord(word, 'loss')
-                }
-            } else {
-                correctLetters += guessIndexList.length;
-
-                if (correctLetters === word.length) {
-                    gameEnd = true;
-                    failcount = 11;
-                    addCompletedWord(word, 'win')
-                }
-            }
-            message(failcount);
-            cleanup(gameEnd)
-        }, { once: true })
-
-        letterButton.classList = 'letter';
-    })
 }

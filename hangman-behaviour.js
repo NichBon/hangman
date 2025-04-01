@@ -1,6 +1,6 @@
+
 import {
-    baldurs,
-    fabrics,
+    wordLists
 } from './js/wordlists.js';
 
 import {
@@ -16,29 +16,51 @@ import {
     message,
     addCompletedWord,
     toggleKeyboard,
-    buttonReset,
+    toggleDarkMode,
 } from './js/dom.js'
 
 
 
-//GAME INITIATION
-let failcount = 0;
+//GAME INITIATION + GLOBAL VARIABLES
+let failcount = 10;
 let correctLetters = 0;
 let gameEnd = false;
+let word = ''
 renderMan(failcount);
-const word = wordSelection(baldurs);
-wordSpaceCreate(word);
-message(failcount)
-console.log(word)
+console.log(wordLists.baldurs)
 
 
-// event for clicking letters
-// run on game start
+//GAME INITIATION (NOT PURE)
+const form = document.querySelector('#gameStart')
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
+    // retrieves word list and selects a word
+    console.log('game attempts to start');
+    const formData = Object.fromEntries(new FormData(form));
+    const wordCategory = formData.wordCategory;
+    word = wordSelection(wordLists[wordCategory]);
+    wordSpaceCreate(word);
+    console.log(word);
+
+    // set game states
+    toggleKeyboard();
+    correctLetters = 0;
+    failcount = 0;
+    gameEnd = false;
+    renderMan(failcount)
+    message(failcount);
+
+
+});
+
+// KEYBOARD ONSCREEN
 document.querySelectorAll('.letter').forEach((letterButton, key) => {
     letterButton.addEventListener("click", (e) => {
+        if (letterButton.classList.contains('guessed')) {
+            return;
+        }
         let letterGuessed = letterKeys[key];
-        console.log(letterGuessed);
 
         // success or fail dom
         let guessIndexList = checkLetter(letterGuessed, word)
@@ -49,43 +71,29 @@ document.querySelectorAll('.letter').forEach((letterButton, key) => {
             failcount += 1;
             renderMan(failcount)
             if (failcount === 10) {
-                gameEnd = true;
+                gameEnd = 'loss';
             }
         } else {
             correctLetters += guessIndexList.length;
-
             if (correctLetters === word.length) {
-                gameEnd = true;
                 failcount = 11;
-                
+                gameEnd = 'win';
             }
         }
         message(failcount);
-        if (gameEnd === true) {
+        if (gameEnd) {
             toggleKeyboard()
-            buttonReset()
-            addCompletedWord(word, failcount)
+            addCompletedWord(word, gameEnd)
+            //reset buttons if needed
+            document.querySelectorAll('.guessed').forEach((letterButton, key) => {
+                letterButton.classList = 'letter';
+            })
         }
-    }, {once: true})
+    }
+    )
 })
 
-
-// change picture if guess is wrong (or other behaviour)
-
-// button press || key press behaviour
-    // if button or key is pressed
-    // guess letter  
-        // if letter is in a guess
-            // show letter in word
-            // turn letter background positive colour
-        //if letter is not in a guess
-            // change wrong guess counter (and change picture)
-            // turn letter background negative colour
-    // deactivate button for that letter
-        
-// success/loss script
-    // return meaning and/or syntax of the word?
-
-
-// reset state
-// record previous word or remove previous word from pool
+document.querySelector('#keyboard').classList.add('hidden');
+document.querySelector('#darkMode').addEventListener('click', (e) => {
+    toggleDarkMode();
+})

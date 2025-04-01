@@ -9,10 +9,13 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
+<body class='dark'>
     <main>
         <section id="heading" class="container">
-            <h1>HANGMAN</h1>
+            <div id="heading-inner">
+                <h1>HANGMAN</h1>
+                <h4 id="darkMode">TOGGLE LIGHT AND DARK MODE</h4>
+            </div>
         </section>
 
         <section id='gameActive'>
@@ -29,48 +32,47 @@
                         <h3>Select a word list</h3>
                         <form id="gameStart">
                             <select class="wordCategory" name="wordCategory" id="wordCategory" required>
-                                <option value="pickone" selected="selected">Pick one</option>
+                                <option value="arrayMethods" value='arrayMethods'>JS array methods</option>
                                 <option value="baldurs" value='baldurs'>BG3 companions</option>
-                                <option value="pickone" value='fabrics'>Types of fabric</option>
+                                <option value="fabrics" value='fabrics'>Types of fabric</option>
                             </select>
-                            <button type="submit">Start Game</button>
+                            <button type="submit" name='submit'>Start Game</button>
                         </form>
-
                     </div>
                 </section>
 
-                <section id="keyboard">
+                <section id="keyboard" class="hidden">
                     <div class="keyboard__row top-row">
-                        <div class="letter" id="letterq">q</div>
-                        <div class="letter" id="letterw">w</div>
-                        <div class="letter" id="lettere">e</div>
-                        <div class="letter" id="letterr">r</div>
-                        <div class="letter" id="lettert">t</div>
-                        <div class="letter" id="lettery">y</div>
-                        <div class="letter" id="letteru">u</div>
-                        <div class="letter" id="letteri">i</div>
-                        <div class="letter" id="lettero">o</div>
-                        <div class="letter" id="letterp">p</div>
+                        <div class="letter" id="letterq">Q</div>
+                        <div class="letter" id="letterw">W</div>
+                        <div class="letter" id="lettere">E</div>
+                        <div class="letter" id="letterr">R</div>
+                        <div class="letter" id="lettert">T</div>
+                        <div class="letter" id="lettery">Y</div>
+                        <div class="letter" id="letteru">U</div>
+                        <div class="letter" id="letteri">I</div>
+                        <div class="letter" id="lettero">O</div>
+                        <div class="letter" id="letterp">P</div>
                     </div>
                     <div class="keyboard__row middle-row">
-                        <div class="letter" id="lettera">a</div>
-                        <div class="letter" id="letters">s</div>
-                        <div class="letter" id="letterd">d</div>
-                        <div class="letter" id="letterf">f</div>
-                        <div class="letter" id="letterg">g</div>
-                        <div class="letter" id="letterh">h</div>
-                        <div class="letter" id="letterj">j</div>
-                        <div class="letter" id="letterk">k</div>
-                        <div class="letter" id="letterl">l</div>
+                        <div class="letter" id="lettera">A</div>
+                        <div class="letter" id="letters">S</div>
+                        <div class="letter" id="letterd">D</div>
+                        <div class="letter" id="letterf">F</div>
+                        <div class="letter" id="letterg">G</div>
+                        <div class="letter" id="letterh">H</div>
+                        <div class="letter" id="letterj">J</div>
+                        <div class="letter" id="letterk">K</div>
+                        <div class="letter" id="letterl">L</div>
                     </div>
                     <div class="keyboard__row bottom-row">
-                        <div class="letter" id="letterz">z</div>
-                        <div class="letter" id="letterx">x</div>
-                        <div class="letter" id="letterc">c</div>
-                        <div class="letter" id="letterv">v</div>
-                        <div class="letter" id="letterb">b</div>
-                        <div class="letter" id="lettern">n</div>
-                        <div class="letter" id="letterm">m</div>
+                        <div class="letter" id="letterz">Z</div>
+                        <div class="letter" id="letterx">X</div>
+                        <div class="letter" id="letterc">C</div>
+                        <div class="letter" id="letterv">V</div>
+                        <div class="letter" id="letterb">B</div>
+                        <div class="letter" id="lettern">N</div>
+                        <div class="letter" id="letterm">M</div>
                     </div>
                 </section>
             </section>

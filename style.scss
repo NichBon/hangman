@@ -1,27 +1,49 @@
-.hidden {
-    display: none;
+.dark {
+    background-color: rgb(29, 25, 25);
+    color: rgb(221, 214, 214);
+}
+
+.light {
+    background-color: rgb(221, 214, 214);
+    color: rgb(29, 25, 25);
 }
 
 .container {
     display: flex;
     justify-content: center;
-    border: 1px solid red;
+}
+
+#heading-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h4 {
+        border: 1px solid grey;
+        padding: 10px;
+    }
+}
+
+img {
+    padding: 2vh;
+    background-color: white;
 }
 
 #word {
     display: flex;
     flex-direction: row;
     margin: 5px;
-    border: 1px solid red;
     padding: 5px;
     justify-content: center;
+    height: 7vh;
 }
 
 .wordLetter {
     display: flex;
     width: 6vh;
     height: 6vh;
-    border: 1px solid red;
+    border: 1px solid grey;
     margin: 5px;
     justify-content: center;
     align-items: center;
@@ -37,6 +59,10 @@
     }
 }
 
+#game-interactive {
+    height: 20vh;
+}
+
 #gameOptions-inner {
     display: flex;
     flex-direction: column;
@@ -44,6 +70,17 @@
     align-items: center;
     margin: 5px;
     padding: 5px;
+    font-size: 2em;
+
+    select {
+        font-size: 0.7em;
+        padding: 7px;
+    }
+
+    button {
+        font-size: 0.7em;
+        padding: 7px;
+    }
 }
 
 .keyboard {
@@ -65,40 +102,39 @@
             width: 4vh;
             height: 4vh;
             margin: 5px;
+            border: 1px solid grey;
+        }
+
+        .wrong {
+            background-color: red;
+        }
+
+        .right {
+            background-color: green;
         }
     }
 }
 
-.guessed {
-    &__wrong {
-        background-color: red;
-    }
-
-    &__right {
-        background-color: green;
-    }
+#message {
+    font-size: 2em;
+    padding-bottom: 3vh;
 }
-
-// .guessed- {
-
-// }
-
-// .guessed-right {
-
-// }
-
-.word-win {
-    color: green;
-}
-
-.word-loss {
-    color: red
-}
-
 
 #completedWords-inner {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .word-loss {
+        color: red
+    }
+
+    .word-win {
+        color: green;
+    }
+}
+
+.hidden {
+    display: none;
 }
