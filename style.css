@@ -1,3 +1,9 @@
+body {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .dark {
   background-color: rgb(29, 25, 25);
   color: rgb(221, 214, 214);
@@ -18,6 +24,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#heading-inner h1 {
+  font-size: 2em;
 }
 #heading-inner h4 {
   border: 1px solid grey;
@@ -68,14 +77,14 @@ img {
   align-items: center;
   margin: 5px;
   padding: 5px;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 #gameOptions-inner select {
-  font-size: 0.7em;
+  font-size: 1em;
   padding: 7px;
 }
 #gameOptions-inner button {
-  font-size: 0.7em;
+  font-size: 1em;
   padding: 7px;
 }
 
